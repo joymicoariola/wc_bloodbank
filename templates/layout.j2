@@ -1,0 +1,22 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - WCBB</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<nav>
+  <h1>West Coast Bloodbank</h1>
+  <ul>
+    <li><a href="{{ url_for('index') }}">Home</a>
+    <li><a href="{{ url_for('donations') }}">Donations</a>
+    <li><a href="{{ url_for('donors') }}">Donors</a>
+    <li><a href="{{ url_for('schedules') }}">Schedules</a>
+    <li><a href="{{ url_for('banks') }}">Banks</a>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

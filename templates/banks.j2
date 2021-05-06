@@ -1,0 +1,49 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Banks{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form action method="post">
+        <u><legend>Add new bank</legend></u>
+        <br>
+        <label for="bankName">Bank Name*</label>
+        <input type="text" name="bankName" id="bankName">
+        <label for="bankAddress">Bank Address*</label>
+        <input type="text" name="bankAddress" id="bankAddress">
+        <label for="city">City*</label>
+        <input type="text" name="city" id="city">
+        <label for="state">State*</label>
+        <input type="text" name="state" id="state">
+        <label for="zip">Zip Code*</label>
+        <input type="text" name="zip" id="zip">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" formmethod="post" value="Add Bank">
+      </form>
+    </div>
+
+    <br>
+
+    <table class="dataTable" border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Location</th>
+        <th>Favorite Language</th>
+    </tr>
+    <tbody>
+    {% for item in people %}
+    <tr>
+        <td>{{item['name']}}</td>
+        <td>{{item['age']}}</td>
+        <td>{{item['location']}}</td>
+        <td>{{item['favorite_color']}}</td>
+        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td><input type="submit" formmethod="post" value="Update"></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Donations{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form action method="post">
+        <u><legend>Add new donation</legend></u>
+        <br>
+        <label for="donatedDate">Date*</label>
+        <input type="text" name="donationDate" id="donationDate">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" formmethod="post" value="Add Donation">
+      </form>
+    </div>
+
+    <br>
+
+    <label for="sortBy">Sort By:</label>
+    <select name="sortBy">
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+    </select>
+    
+    <br>
+    <br>
+    
+    <table class="dataTable" border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Location</th>
+        <th>Favorite Language</th>
+    </tr>
+    <tbody>
+    {% for item in people %}
+    <tr>
+        <td>{{item['name']}}</td>
+        <td>{{item['age']}}</td>
+        <td>{{item['location']}}</td>
+        <td>{{item['favorite_color']}}</td>
+        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td><input type="submit" formmethod="post" value="Update"></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

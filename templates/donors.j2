@@ -1,0 +1,73 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Donors{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form action method="post">
+        <u><legend>Add new donor</legend></u>
+        <br>
+        <label for="firstName">First name*</label>
+        <input type="text" name="firstName" id="firstName">
+        <label for="lastName">Last name*</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="dateOfBirth">Date of Birth*</label>
+        <input type="text" name="dateOfBirth" id="dateOfBirth">
+        <label for="bloodType">Blood Type*</label>
+        <input type="text" name="bloodType" id="bloodType">
+        <label for="nextDonationDate">Next Donation Date</label>
+        <input type="text" name="nextDonationDate" id="nextDonationDate">
+        <label for="lastDonationDate">Last Donation Date</label>
+        <input type="text" name="lastDonationDate" id="lastDonationDate">
+        <label for="street">Street*</label>
+        <input type="text" name="street" id="street">
+        <label for="city">City*</label>
+        <input type="text" name="city" id="city">
+        <label for="state">State*</label>
+        <input type="text" name="state" id="state">
+        <label for="zip">Zip Code*</label>
+        <input type="text" name="zip" id="zip">
+        <label for="phone">Phone Number*</label>
+        <input type="text" name="phone" id="phone">
+        <label for="email">Email*</label>
+        <input type="text" name="email" id="email">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" formmethod="post" value="Add Donor">
+      </form>
+    </div>
+
+    <br>
+
+    <label for="sortBy">Sort By:</label>
+    <select name="sortBy">
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+      <option value="dob">Date of Birth</option>
+    </select>
+    
+    <br>
+    <br>
+
+    <table class="dataTable" border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Location</th>
+        <th>Favorite Language</th>
+    </tr>
+    <tbody>
+    {% for item in people %}
+    <tr>
+        <td>{{item['name']}}</td>
+        <td>{{item['age']}}</td>
+        <td>{{item['location']}}</td>
+        <td>{{item['favorite_color']}}</td>
+        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td><input type="submit" formmethod="post" value="Update"></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
