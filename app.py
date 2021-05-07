@@ -9,28 +9,28 @@ app = Flask(__name__)
 
 people_from_app_py = [
 {
-    "name": "Thomas",
+    "name": "--",
     "age": 33,
-    "location": "New Mexico",
-    "favorite_color": "Blue"
+    "location": "--",
+    "favorite_color": "--"
 },
 {
-    "name": "Gregory",
+    "name": "--",
     "age": 41,
-    "location": "Texas",
-    "favorite_color": "Red"
+    "location": "--",
+    "favorite_color": "--"
 },
 {
-    "name": "Vincent",
+    "name": "--",
     "age": 27,
-    "location": "Ohio",
-    "favorite_color": "Green"
+    "location": "--",
+    "favorite_color": "--"
 },
 {
-    "name": "Alexander",
+    "name": "--",
     "age": 29,
-    "location": "Florida",
-    "favorite_color": "Orange"
+    "location": "--",
+    "favorite_color": "--"
 }]
 
 # Routes 
@@ -56,8 +56,16 @@ def schedules():
 def banks():
     return render_template("banks.j2", people=people_from_app_py)
 
+@app.route('/donors_schedules')
+def donors_schedules():
+    return render_template("donors_schedules.j2", people=people_from_app_py)
+
+@app.route('/time_slots')
+def time_slots():
+    return render_template("time_slots.j2", people=people_from_app_py)
+
 # Listener
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 7984))
+    port = int(os.environ.get('PORT', 7986))
     app.run(host="flip1.engr.oregonstate.edu", port=port, debug=True) 

@@ -1,6 +1,6 @@
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
+html { font-family: sans-serif; background: #6991AA; padding: 1rem; }
 body { max-width: 960px; margin: 0 auto; background: white; }
-h1 { font-family: serif; color: #01406b; margin: 1rem 0; }
+h1 { font-family: sans-serif; color: #01406b; margin: 1rem 0; }
 a { color: #002f4e; }
 p { padding: 0.1rem; margin: 1em 0}
 hr { border: none; border-top: 1px solid lightgray; }
@@ -25,5 +25,3 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
-
-.dataTable { border: 1px solid #377ba8; }

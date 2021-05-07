@@ -29,18 +29,16 @@
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Location</th>
-        <th>Favorite Language</th>
+        <th>Bank ID</th>
+        <th>Bank Name</th>
+        <th>Bank Address</th>
     </tr>
     <tbody>
     {% for item in people %}
     <tr>
         <td>{{item['name']}}</td>
-        <td>{{item['age']}}</td>
+        <td>{{item['name']}}</td>
         <td>{{item['location']}}</td>
-        <td>{{item['favorite_color']}}</td>
         <td><input type="submit" formmethod="post" value="Delete"></td>
         <td><input type="submit" formmethod="post" value="Update"></td>
     </tr>

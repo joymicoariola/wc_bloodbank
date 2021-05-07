@@ -7,7 +7,7 @@
 {% block content %}
  <div>
       <form action method="post">
-        <u><legend>Add new appoimtment</legend></u>
+        <u><legend>Add new appointment</legend></u>
         <br>
         <label for="startTime">Start Time*</label>
         <input type="text" name="startTime" id="startTime">
@@ -23,16 +23,16 @@
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Location</th>
-        <th>Favorite Language</th>
+        <th>Schedule ID</th>
+        <th>Bank ID</th>
+        <th>Schedule Date</th>
+        <th>Time</th>
     </tr>
     <tbody>
     {% for item in people %}
     <tr>
         <td>{{item['name']}}</td>
-        <td>{{item['age']}}</td>
+        <td>{{item['name']}}</td>
         <td>{{item['location']}}</td>
         <td>{{item['favorite_color']}}</td>
         <td><input type="submit" formmethod="post" value="Delete"></td>
