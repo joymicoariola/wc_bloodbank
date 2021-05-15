@@ -1,0 +1,50 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Phlebotomists{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form action method="post">
+        <u><legend>Add phlebotomists</legend></u>
+        <br>
+        <label for="donatedDate">Bank ID*</label>
+        <input type="text" name="bankID" id="bankID">
+        <label for="donatedDate">First Name*</label>
+        <input type="text" name="firstName" id="firstName">
+        <label for="donatedDate">Last Name*</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="donatedDate">License Expiration*</label>
+        <input type="text" name="licenseExpiration" id="licenseExpiration">
+        <label for="donatedDate">Phone*</label>
+        <input type="text" name="phone" id="phone">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" formmethod="post" value="Add Phlebotomist">
+      </form>
+    </div>
+    
+    <br>
+    <br>
+    
+    <table class="dataTable" border="1">
+    <thead>
+    <tr>
+        <th>Bank ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>License Expiration</th>
+    </tr>
+    <tbody>
+    {% for item in people %}
+    <tr>
+        <td>{{item['name']}}</td>
+        <td>{{item['name']}}</td>
+        <td>{{item['location']}}</td>
+        <td>{{item['favorite_color']}}</td>
+        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td><input type="submit" formmethod="post" value="Update"></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

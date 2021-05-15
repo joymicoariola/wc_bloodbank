@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import MySQLdb as mariadb
-from db_credentials import host, user, passwd, db
+#from db_credentials import host, user, passwd, db
 import os
 
 # Configuration
@@ -40,13 +40,13 @@ people_from_app_py = [
 def index():
     return render_template("index.j2")
 
-@app.route('/donations')
-def donations():
-    return render_template("donations.j2", people=people_from_app_py)
-
 @app.route('/donors')
 def donors():
     return render_template("donors.j2", people=people_from_app_py)
+
+@app.route('/Phlebotomists')
+def phlebotomists():
+    return render_template("phlebotomists.j2", people=people_from_app_py)
 
 @app.route('/schedules')
 def schedules():
@@ -60,12 +60,8 @@ def banks():
 def donors_schedules():
     return render_template("donors_schedules.j2", people=people_from_app_py)
 
-@app.route('/time_slots')
-def time_slots():
-    return render_template("time_slots.j2", people=people_from_app_py)
-
 # Listener
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 7986))
+    port = int(os.environ.get('PORT', 7985))
     app.run(host="flip1.engr.oregonstate.edu", port=port, debug=True) 

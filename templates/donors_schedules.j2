@@ -6,7 +6,21 @@
 
 {% block content %}
     <div>
+      <form action method="post">
+        <u><legend>Donors/Schedules Relationship</legend></u>
+        <br>
+        <label for="bankName">Donor ID*</label>
+        <input type="text" name="donorID" id="donorID">
+        <label for="bankAddress">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
+        <a style="font-size:12px;">* denotes required field</a>
+      </form>
+    </div>
+
+    <button class="button" type="button">Add Relationship</button>
+    <button class="button" type="button">Delete Relationship</button>
     
+    <br>
     <br>
     <table class="dataTable" border="1">
     <thead>
@@ -24,9 +38,5 @@
     </div>
     {% endfor %}
     </table>
-
-    <br>
-    <button class="button" type="button">Add Relationship</button>
-    <button class="button" type="button">Delete Relationship</button>
 
 {% endblock %}

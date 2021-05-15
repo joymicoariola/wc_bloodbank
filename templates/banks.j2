@@ -19,6 +19,8 @@
         <input type="text" name="state" id="state">
         <label for="zip">Zip Code*</label>
         <input type="text" name="zip" id="zip">
+        <label for="zip">Phone*</label>
+        <input type="text" name="phone" id="phone">
         <a style="font-size:12px;">* denotes required field</a>
         <input type="submit" formmethod="post" value="Add Bank">
       </form>
@@ -29,9 +31,9 @@
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Bank ID</th>
         <th>Bank Name</th>
         <th>Bank Address</th>
+        <th>Phone Number</th>
     </tr>
     <tbody>
     {% for item in people %}
