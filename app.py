@@ -60,6 +60,10 @@ def banks():
 def donors_schedules():
     return render_template("donors_schedules.j2", people=people_from_app_py)
 
+@app.route('/phlebotomists_schedules')
+def donors_schedules():
+    return render_template("phlebotomists_schedules.j2", people=people_from_app_py)
+
 # Listener
 
 if __name__ == "__main__":
