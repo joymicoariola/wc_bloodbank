@@ -18,7 +18,7 @@ def index():
 @app.route('/donors')
 def donors():
     db_connection = connect_to_database()
-    query = "SELECT firstName, lastName, dateOfBirth, bloodType FROM Donors"
+    query = "SELECT firstName, lastName, dateOfBirth, bloodType FROM Donors ORDER BY firstName ASC;"
     sql_result = execute_query(db_connection, query).fetchall()
     return render_template("donors.j2", people=sql_result)
 
