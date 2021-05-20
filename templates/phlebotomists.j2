@@ -16,9 +16,9 @@
         <label for="donatedDate">Last Name*</label>
         <input type="text" name="lastName" id="lastName">
         <label for="donatedDate">License Expiration*</label>
-        <input type="date" name="licenseExpiration" id="licenseExpiration">
+        <input type="text" name="licenseExpiration" id="licenseExpiration">
         <label for="donatedDate">Phone*</label>
-        <input type="text" name="phone" id="phone" placeholder="999-999-9999">
+        <input type="text" name="phone" id="phone">
         <a style="font-size:12px;">* denotes required field</a>
         <input type="submit" formmethod="post" value="Add Phlebotomist">
       </form>
@@ -38,10 +38,10 @@
     <tbody>
     {% for item in people %}
     <tr>
-        <td>{{item['name']}}</td>
-        <td>{{item['name']}}</td>
-        <td>{{item['location']}}</td>
-        <td>{{item['favorite_color']}}</td>
+        <td>{{item.0}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
         <td><input type="submit" formmethod="post" value="Delete"></td>
         <td><input type="submit" formmethod="post" value="Update"></td>
     </tr>

@@ -1,4 +1,4 @@
 host = 'classmysql.engr.oregonstate.edu'
-user = 'cs340_arioljoy'
-passwd = '2647'
-db = 'cs340_arioljoy'
+user = 'cs340_bodvigd'
+passwd = '8287'
+db = 'cs340_bodvigd'

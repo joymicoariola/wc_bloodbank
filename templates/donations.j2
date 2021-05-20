@@ -1,18 +1,20 @@
 {% extends 'layout.j2' %}
 
 {% block header %}
-  <h1>{% block title %}Donors_Schedules Table{% endblock %}</h1>
+  <h1>{% block title %}Donations Table{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
     <div>
       <form action method="post">
-        <u><legend>Donors/Schedules Relationship</legend></u>
+        <u><legend>Donations Relationships</legend></u>
         <br>
+        <label for="bankName">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
+        <label for="bankAddress">Phlebotomist ID*</label>
+        <input type="text" name="phlebotomistID" id="phlebotomistID">
         <label for="bankName">Donor ID*</label>
         <input type="text" name="donorID" id="donorID">
-        <label for="bankAddress">Schedule ID*</label>
-        <input type="text" name="scheduleID" id="scheduleID">
         <a style="font-size:12px;">* denotes required field</a>
       </form>
     </div>
@@ -25,15 +27,18 @@
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Donor ID</th>
         <th>Schedule ID</th>
+        <th>Phlebotomist ID</th>
+        <th>Donor ID</th>
+        
     </tr>
     <tbody>
 
     {% for item in people %}
     <tr>
-        <td>----</td>
-        <td>----</td>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
     </tr>
     </div>
     {% endfor %}

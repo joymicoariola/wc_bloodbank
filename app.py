@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 import MySQLdb as mariadb
-#from db_credentials import host, user, passwd, db
 from flask import request
 from db_connector import connect_to_database, execute_query
 import os
@@ -18,7 +17,10 @@ def index():
 
 @app.route('/donors')
 def donors():
-    return render_template("donors.j2")
+    db_connection = connect_to_database()
+    query = "SELECT firstName, lastName, dateOfBirth, bloodType FROM Donors"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("donors.j2", people=sql_result)
 
 @app.route('/add_new_donor', methods=['POST', 'GET'])
 def add_new_donor():
@@ -40,32 +42,34 @@ def add_new_donor():
     result = execute_query(db_connection, query, data)
     return render_template("donors.j2")
 
-@app.route('/Phlebotomists')
+@app.route('/phlebotomists')
 def phlebotomists():
-    return render_template("phlebotomists.j2")
+    db_connection = connect_to_database()
+    query = "SELECT bankID, firstName, lastName, licenseExpiration FROM Phlebotomist"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("phlebotomists.j2", people=sql_result)
 
 @app.route('/schedules')
 def schedules():
-    return render_template("schedules.j2")
+    db_connection = connect_to_database()
+    query = "SELECT scheduleDate, startTime, endTime FROM Schedules"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("schedules.j2", people=sql_result)
 
 @app.route('/banks')
 def banks():
-    return render_template("banks.j2")
+    db_connection = connect_to_database()
+    query = "SELECT bankName, bankAddress, phone FROM Banks"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("banks.j2", people=sql_result)
 
-@app.route('/donors_schedules')
-def donors_schedules():
-    return render_template("donors_schedules.j2")
-
-@app.route('/phlebotomists_schedules')
-def phlebotomists_schedules():
-    return render_template("phlebotomists_schedules.j2")
-
-@app.route('/phlebotomists_schedules')
-def donors_schedules():
-    return render_template("phlebotomists_schedules.j2", people=people_from_app_py)
-
+@app.route('/donations')
+def donations():
+    db_connection = connect_to_database()
+    query = "SELECT scheduleID, phlebotomistID, donorID FROM Donations"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("donations.j2", people=sql_result)
 # Listener
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 7980))
-    app.run(host="flip1.engr.oregonstate.edu", port=port, debug=True) 
+    app.run() 
