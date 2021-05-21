@@ -1,0 +1,61 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Donations Table{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form id="newDonation" action="/add_new_donations" method="post">
+        <u><legend>ADD Donations (Donors/Phlebotomists/Schedules) Relationship</legend></u>
+        <br>
+        <label for="donorID">Donor ID*</label>
+        <input type="text" name="donorID" id="donorID">
+        <label for="phlebotomistID">Employee ID*</label>
+        <input type="text" name="phlebotomistID" id="phlebotomistID">
+        <label for="scheduleID">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
+        <a style="font-size:12px;">* denotes required field</a>
+        <br>
+        <input type="submit" value="Add Relationship">
+      </form>
+    </div>
+
+    <div>
+      <form id="deleteDonation" action="/delete_donations" method="post">
+        <u><legend>DELETE Donations (Donors/Phlebotomists/Schedules) Relationship</legend></u>
+        <br>
+        <label for="donorID">Donor ID*</label>
+        <input type="text" name="donorID" id="donorID">
+        <label for="phlebotomistID">Employee ID*</label>
+        <input type="text" name="phlebotomistID" id="phlebotomistID">
+        <label for="scheduleID">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
+        <a style="font-size:12px;">* denotes required field</a>
+        <br>
+        <input type="submit" value="Delete Relationship">
+      </form>
+    </div>
+    
+    <br>
+    <br>
+    <table class="dataTable" border="1">
+    <thead>
+    <tr>
+        <th>Donor ID</th>
+        <th>Employee ID</th>
+        <th>Schedule ID</th>
+    </tr>
+    <tbody>
+
+    {% for item in people %}
+    <tr>
+        <td>----</td>
+        <td>----</td>
+        <td>----</td>
+    </tr>
+    </div>
+    {% endfor %}
+    </table>
+
+{% endblock %}

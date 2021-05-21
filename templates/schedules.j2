@@ -6,17 +6,17 @@
 
 {% block content %}
  <div>
-      <form action method="post">
+      <form id="newSchedule" action="/add_new_schedule" method="post">
         <u><legend>Add new appointment</legend></u>
         <br>
-        <label for="date">Date*</label>
-        <input type="date" name="date" id="date">
+        <label for="scheduleDate">Date*</label>
+        <input type="date" name="scheduleDate" id="scheduleDate">
         <label for="startTime">Start Time*</label>
         <input type="time" name="startTime" id="startTime">
         <label for="endTime">End Time*</label>
         <input type="time" name="endTime" id="endTime">
         <a style="font-size:12px;">* denotes required field</a>
-        <input type="submit" formmethod="post" value="Add Schedule">
+        <input type="submit" value="Add Schedule">
       </form>
     </div>
 
