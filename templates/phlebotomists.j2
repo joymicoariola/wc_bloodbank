@@ -6,7 +6,7 @@
 
 {% block content %}
     <div>
-      <form action method="post">
+      <form id="newPhlebotomist" action="/add_new_phlebotomist" method="post">
         <u><legend>Add phlebotomists</legend></u>
         <br>
         <label for="donatedDate">Bank ID*</label>
@@ -20,7 +20,7 @@
         <label for="donatedDate">Phone*</label>
         <input type="text" name="phone" id="phone">
         <a style="font-size:12px;">* denotes required field</a>
-        <input type="submit" formmethod="post" value="Add Phlebotomist">
+        <input type="submit" value="Add Phlebotomist">
       </form>
     </div>
     

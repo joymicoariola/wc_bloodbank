@@ -6,22 +6,37 @@
 
 {% block content %}
     <div>
-      <form action method="post">
-        <u><legend>Donations Relationships</legend></u>
+      <form id="newDonation" action="/add_new_donations" method="post">
+        <u><legend>ADD Donations (Donors/Phlebotomists/Schedules) Relationship</legend></u>
         <br>
-        <label for="bankName">Schedule ID*</label>
-        <input type="text" name="scheduleID" id="scheduleID">
-        <label for="bankAddress">Phlebotomist ID*</label>
-        <input type="text" name="phlebotomistID" id="phlebotomistID">
-        <label for="bankName">Donor ID*</label>
+        <label for="donorID">Donor ID*</label>
         <input type="text" name="donorID" id="donorID">
+        <label for="phlebotomistID">Phlebotomist ID*</label>
+        <input type="text" name="phlebotomistID" id="phlebotomistID">
+        <label for="scheduleID">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
         <a style="font-size:12px;">* denotes required field</a>
+        <br>
+        <input type="submit" value="Add Relationship">
       </form>
     </div>
 
-    <button class="button" type="button">Add Relationship</button>
-    <button class="button" type="button">Delete Relationship</button>
-    
+    <div>
+      <form id="deleteDonation" action="/delete_donations" method="post">
+        <u><legend>DELETE Donations (Donors/Phlebotomists/Schedules) Relationship</legend></u>
+        <br>
+        <label for="donorID">Donor ID*</label>
+        <input type="text" name="donorID" id="donorID">
+        <label for="phlebotomistID">Phlebotomist ID*</label>
+        <input type="text" name="phlebotomistID" id="phlebotomistID">
+        <label for="scheduleID">Schedule ID*</label>
+        <input type="text" name="scheduleID" id="scheduleID">
+        <a style="font-size:12px;">* denotes required field</a>
+        <br>
+        <input type="submit" value="Delete Relationship">
+      </form>
+    </div>
+
     <br>
     <br>
     <table class="dataTable" border="1">
@@ -30,7 +45,6 @@
         <th>Schedule ID</th>
         <th>Phlebotomist ID</th>
         <th>Donor ID</th>
-        
     </tr>
     <tbody>
 
@@ -39,6 +53,7 @@
         <td>{{item[0]}}</td>
         <td>{{item[1]}}</td>
         <td>{{item[2]}}</td>
+
     </tr>
     </div>
     {% endfor %}
