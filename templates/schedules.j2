@@ -12,9 +12,9 @@
         <label for="scheduleDate">Date*</label>
         <input type="date" name="scheduleDate" id="scheduleDate">
         <label for="startTime">Start Time*</label>
-        <input type="time" name="startTime" id="startTime">
+        <input type="text" name="startTime" id="startTime">
         <label for="endTime">End Time*</label>
-        <input type="time" name="endTime" id="endTime">
+        <input type="text" name="endTime" id="endTime">
         <a style="font-size:12px;">* denotes required field</a>
         <input type="submit" value="Add Schedule">
       </form>
@@ -33,10 +33,9 @@
     <tbody>
     {% for item in people %}
     <tr>
-        <td>{{item['name']}}</td>
-        <td>{{item['name']}}</td>
-        <td>{{item['location']}}</td>
-        <td>{{item['favorite_color']}}</td>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
         <td><input type="submit" formmethod="post" value="Delete"></td>
         <td><input type="submit" formmethod="post" value="Update"></td>
     </tr>
