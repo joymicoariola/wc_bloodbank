@@ -39,13 +39,13 @@
     </div>
 
     <br>
+    <ul> <h3> Filter By:</h3>
+     <li><a href="{{ url_for('donors') }}">First Name</a></li>
+     <li><a href="{{ url_for('donors_last') }}">Last Name</a></li>
+     <li><a href="{{ url_for('donors_DOB') }}">Date of Birth</a></li>
+    </ul>
+  
 
-    <label for="sortBy">Sort By:</label>
-    <select name="sortBy">
-      <option value="firstName">First Name</option>
-      <option value="lastName">Last Name</option>
-      <option value="dob">Date of Birth</option>
-    </select>
     
     <br>
     <br>

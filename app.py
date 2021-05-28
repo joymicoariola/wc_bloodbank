@@ -22,6 +22,20 @@ def donors():
     sql_result = execute_query(db_connection, query).fetchall()
     return render_template("donors.j2", people=sql_result)
 
+@app.route('/donors_last')
+def donors_last():
+    db_connection = connect_to_database()
+    query = "SELECT firstName, lastName, dateOfBirth, bloodType FROM Donors ORDER BY lastName ASC;"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("donors.j2", people=sql_result)
+
+@app.route('/donors_DOB')
+def donors_DOB():
+    db_connection = connect_to_database()
+    query = "SELECT firstName, lastName, dateOfBirth, bloodType FROM Donors ORDER BY dateOfBirth ASC;"
+    sql_result = execute_query(db_connection, query).fetchall()
+    return render_template("donors.j2", people=sql_result)
+
 @app.route('/add_new_donor', methods=['POST', 'GET'])
 def add_new_donor():
     db_connection = connect_to_database()
