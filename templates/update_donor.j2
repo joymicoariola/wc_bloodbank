@@ -1,14 +1,12 @@
 {% extends 'layout.j2' %}
 
 {% block header %}
-  <h1>{% block title %}Donors{% endblock %}</h1>
+  <h1>{% block title %}Update Donor{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
     <div>
-      <form id="newDonor" action="/add_new_donor" method="post">
-        <u><legend>Add new donor</legend></u>
-        <br>
+      <form id="updateDonor" action={{ url_for('submit_donor_update', rowId=donor_id) }} method="post">
         <label for="firstName">First name*</label>
         <input type="text" name="firstName" id="firstName">
         <label for="lastName">Last name*</label>
@@ -98,42 +96,7 @@
         <label for="email">Email*</label>
         <input type="text" name="email" id="email">
         <a style="font-size:12px;">* denotes required field</a>
-        <input type="submit" value="donorSubmit">
+        <input type="submit" value="Update Donor">
       </form>
     </div>
-
-    <br>
-
-    <label for="sortBy">Sort By:</label>
-    <select name="sortBy">
-      <option value="firstNameSort">First Name</option>
-      <option value="lastNameSort">Last Name</option>
-      <option value="dobSort">Date of Birth</option>
-    </select>
-    
-    <br>
-    <br>
-
-    <table class="dataTable" border="1">
-    <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Date of Birth</th>
-        <th>Blood Type</th>
-    </tr>
-    <tbody>
-    {% for item in people %}
-    <tr>
-        <td>{{item[1]}}</td>
-        <td>{{item[2]}}</td>
-        <td>{{item[3]}}</td>
-        <td>{{item[4]}}</td>
-        <td><input type="submit" formmethod="post" value="Delete"></td>
-        <form id="updateDonor" action="{{ url_for('update_donor', rowId=item[0]) }}" method="post">
-          <td><input type="submit" value="Update"></td>
-        </form>
-    </tr>
-    {% endfor %}
-    </table>
 {% endblock %}

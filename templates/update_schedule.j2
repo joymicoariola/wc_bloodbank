@@ -1,0 +1,22 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Update Schedules{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+ <div>
+    <form id="updateSchedule" action={{ url_for('submit_schedule_update', rowId=schedule_id) }} method="post">
+    <u><legend>Add new appointment</legend></u>
+    <br>
+    <label for="scheduleDate">Date*</label>
+    <input type="date" name="scheduleDate" id="scheduleDate">
+    <label for="startTime">Start Time*</label>
+    <input type="text" name="startTime" id="startTime">
+    <label for="endTime">End Time*</label>
+    <input type="text" name="endTime" id="endTime">
+    <a style="font-size:12px;">* denotes required field</a>
+    <input type="submit" value="Update Schedule">
+    </form>
+</div>
+{% endblock %}

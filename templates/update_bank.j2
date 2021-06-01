@@ -1,0 +1,26 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Update Banks{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form id="updateBanks" action={{ url_for('submit_bank_update', rowId=bank_id) }} method="post">
+        <label for="bankName">Bank Name*</label>
+        <input type="text" name="bankName" id="bankName">
+        <label for="bankAddress">Bank Address*</label>
+        <input type="text" name="bankAddress" id="bankAddress">
+        <label for="city">City*</label>
+        <input type="text" name="city" id="city">
+        <label for="state">State*</label>
+        <input type="text" name="state" id="state">
+        <label for="zip">Zip Code*</label>
+        <input type="text" name="zip" id="zip">
+        <label for="zip">Phone*</label>
+        <input type="text" name="phone" id="phone">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" value="Update Bank">
+      </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.j2' %}
+
+{% block header %}
+  <h1>{% block title %}Update Phlebotomists{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+      <form id="updatePhlebotomist" action={{ url_for('submit_phlebotomist_update', rowId=phlebotomist_id) }} method="post">
+        <u><legend>Update phlebotomists</legend></u>
+        <br>
+        <label for="donatedDate">Bank ID*</label>
+        <input type="text" name="bankID" id="bankID">
+        <label for="donatedDate">First Name*</label>
+        <input type="text" name="firstName" id="firstName">
+        <label for="donatedDate">Last Name*</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="donatedDate">License Expiration*</label>
+        <input type="text" name="licenseExpiration" id="licenseExpiration">
+        <label for="donatedDate">Phone*</label>
+        <input type="text" name="phone" id="phone">
+        <a style="font-size:12px;">* denotes required field</a>
+        <input type="submit" value="Update Phlebotomist">
+      </form>
+    </div>
+{% endblock %}

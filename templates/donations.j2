@@ -11,7 +11,7 @@
         <br>
         <label for="donorID">Donor ID*</label>
         <input type="text" name="donorID" id="donorID">
-        <label for="phlebotomistID">Employee ID*</label>
+        <label for="phlebotomistID">Phlebotomist ID*</label>
         <input type="text" name="phlebotomistID" id="phlebotomistID">
         <label for="scheduleID">Schedule ID*</label>
         <input type="text" name="scheduleID" id="scheduleID">
@@ -27,7 +27,7 @@
         <br>
         <label for="donorID">Donor ID*</label>
         <input type="text" name="donorID" id="donorID">
-        <label for="phlebotomistID">Employee ID*</label>
+        <label for="phlebotomistID">Phlebotomist ID*</label>
         <input type="text" name="phlebotomistID" id="phlebotomistID">
         <label for="scheduleID">Schedule ID*</label>
         <input type="text" name="scheduleID" id="scheduleID">
@@ -36,23 +36,24 @@
         <input type="submit" value="Delete Relationship">
       </form>
     </div>
-    
+
     <br>
     <br>
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Donor ID</th>
-        <th>Employee ID</th>
         <th>Schedule ID</th>
+        <th>Phlebotomist ID</th>
+        <th>Donor ID</th>
     </tr>
     <tbody>
 
     {% for item in people %}
     <tr>
-        <td>----</td>
-        <td>----</td>
-        <td>----</td>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+
     </tr>
     </div>
     {% endfor %}
