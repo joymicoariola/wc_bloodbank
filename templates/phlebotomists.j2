@@ -42,7 +42,7 @@
         <td>{{item[2]}}</td>
         <td>{{item[3]}}</td>
         <td>{{item[4]}}</td>
-        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td> <input type='button' value='Delete' name='delete' onclick="window.location = '/delete_phlebotomist/{{item[0]}}'"></td>
         <form id="updatePhlebotomist" action="{{ url_for('update_phlebotomist', rowId=item[0]) }}" method="post">
           <td><input type="submit" value="Update"></td>
         </form>
