@@ -41,7 +41,7 @@
         <td>{{item[1]}}</td>
         <td>{{item[2]}}</td>
         <td>{{item[3]}}</td>
-        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td> <input type='button' value='Delete' name='delete' onclick="window.location = '/delete_bank/{{item[0]}}'"></td>
         <form id="updateBank" action="{{ url_for('update_bank', rowId=item[0]) }}" method="post">
           <td><input type="submit" formmethod="post" value="Update"></td>
         </form>
