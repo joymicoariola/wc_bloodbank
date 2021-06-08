@@ -179,36 +179,6 @@ def delete_phlebotomist(id):
     sql_result = execute_query(db_connection, updated_query).fetchall()
     return render_template("phlebotomists.j2", people=sql_result, bankNames=dropDownResult)
 
-@app.route('delete_phlebotomist/<int:id>')
-def delete_phlebotomist(id):
-    db_connection = connect_to_database()
-    query = "DELETE FROM Phlebotomist WHERE phlebotomistID = %s"
-    data = (id,)
-    result = execute_query(db_connection, query, data)
-    updated_query = "SELECT phlebotomistID, bankID, firstName, lastName, licenseExpiration FROM Phlebotomist ORDER BY firstName ASC;"
-    sql_result = execute_query(db_connection, updated_query).fetchall()
-    return render_template("phlebotomists.j2", people=sql_result)
-
-
-@app.route('delete_bank/<int:id>')
-def delete_bank(id):
-    db_connection = connect_to_database()
-    query = "DELETE FROM Banks WHERE bankID = %s"
-    data = (id,)
-    result = execute_query(db_connection, query, data)
-    updated_query = "SELECT bankId, bankName, bankAddress, phone FROM Banks"
-    sql_result = execute_query(db_connection, updated_query).fetchall()
-    return render_template("banks.j2", people=sql_result)
-
-@app.route('delete_schedule/<int:id>')
-def delete_schedule(id):
-    db_connection = connect_to_database()
-    query = "DELETE FROM Schedules WHERE scheduleID = %s"
-    data = (id,)
-    result = execute_query(db_connection, query, data)
-    updated_query = "SELECT scheduleID, bankID, scheduleDate, startTime, endTime FROM Schedules ORDER BY scheduleDate ASC;"
-    sql_result = execute_query(db_connection, updated_query).fetchall()
-    return render_template("schedules.j2", people=sql_result)
 
 
 # ----------------- SCHEDULES PAGE ------------------------
