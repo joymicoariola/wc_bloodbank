@@ -3,18 +3,36 @@
 {% block header %}
   <h1>{% block title %}Update Schedules{% endblock %}</h1>
 {% endblock %}
-
+ 
 {% block content %}
  <div>
+
+    <! -- VALIDATE INPUT -- !>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+
     <form id="updateSchedule" action={{ url_for('submit_schedule_update', rowId=schedule_id) }} method="post">
     <u><legend>Add new appointment</legend></u>
     <br>
+      <label for="bankID">Bank</label>
+      <select id="bankID" name="bankID">
+        <option value="No Bank">No bank</selection>
+        {% for option in bankNames %}
+        <option value="{{option[1]}}">{{option[0]}}</option>
+        {% endfor %}
+        </select>
+        <br>
     <label for="scheduleDate">Date*</label>
-    <input type="date" name="scheduleDate" id="scheduleDate">
+    <input type="text" name="scheduleDate" id="scheduleDate" value="{{prePop[0][1]}}" onfocus="(this.type='date')">
     <label for="startTime">Start Time*</label>
-    <input type="text" name="startTime" id="startTime">
+    <input type="text" name="startTime" id="startTime" value="{{prePop[0][2]}}" onfocus="(this.type='time')">
     <label for="endTime">End Time*</label>
-    <input type="text" name="endTime" id="endTime">
+    <input type="text" name="endTime" id="endTime" value="{{prePop[0][3]}}" onfocus="(this.type='time')">
     <a style="font-size:12px;">* denotes required field</a>
     <input type="submit" value="Update Schedule">
     </form>

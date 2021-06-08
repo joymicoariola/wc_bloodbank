@@ -6,19 +6,34 @@
 
 {% block content %}
     <div>
+      
+      <! -- VALIDATE INPUT -- !>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block body %}{% endblock %}
+      
       <form id="updatePhlebotomist" action={{ url_for('submit_phlebotomist_update', rowId=phlebotomist_id) }} method="post">
         <u><legend>Update phlebotomists</legend></u>
         <br>
-        <label for="donatedDate">Bank ID*</label>
-        <input type="text" name="bankID" id="bankID">
+        <label for="bankID">Bank</label>
+        <select id="bankID" name="bankID">
+          {% for option in bankNames %}
+          <option value="{{option[1]}}">{{option[0]}}</option>
+          {% endfor %}
+        </select>
+        <br>
         <label for="donatedDate">First Name*</label>
-        <input type="text" name="firstName" id="firstName">
+        <input type="text" name="firstName" id="firstName" value="{{prePop[0][1]}}">
         <label for="donatedDate">Last Name*</label>
-        <input type="text" name="lastName" id="lastName">
-        <label for="donatedDate">License Expiration*</label>
-        <input type="text" name="licenseExpiration" id="licenseExpiration">
-        <label for="donatedDate">Phone*</label>
-        <input type="text" name="phone" id="phone">
+        <input type="text" name="lastName" id="lastName" value="{{prePop[0][2]}}">
+        <label for="licenseExp">License Expiration*</label>
+        <input type="date" name="licenseExpiration" id="licenseExpiration" value="{{prePop[0][3]}}" onfocus="(this.type='date')">
+        <label for="phone">Phone*</label>
+        <input type="text" name="phone" id="phone" value="{{prePop[0][4]}}">
         <a style="font-size:12px;">* denotes required field</a>
         <input type="submit" value="Update Phlebotomist">
       </form>

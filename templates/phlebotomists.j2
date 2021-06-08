@@ -6,19 +6,35 @@
 
 {% block content %}
     <div>
+
+      <! -- VALIDATE INPUT -- !>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block body %}{% endblock %}
+
       <form id="newPhlebotomist" action="/add_new_phlebotomist" method="post">
         <u><legend>Add phlebotomists</legend></u>
         <br>
-        <label for="donatedDate">Bank ID*</label>
-        <input type="text" name="bankID" id="bankID">
-        <label for="donatedDate">First Name*</label>
+        <label for="bankID">Bank</label>
+        <select id="bankID" name="bankID">
+          <option value="No Bank">No Bank</option>
+          {% for option in bankNames %}
+          <option value="{{option[1]}}">{{option[0]}}</option>
+          {% endfor %}
+        </select>
+        <br>
+        <label for="fname">First Name*</label>
         <input type="text" name="firstName" id="firstName">
-        <label for="donatedDate">Last Name*</label>
+        <label for="lname">Last Name*</label>
         <input type="text" name="lastName" id="lastName">
-        <label for="donatedDate">License Expiration*</label>
-        <input type="text" name="licenseExpiration" id="licenseExpiration">
-        <label for="donatedDate">Phone*</label>
-        <input type="text" name="phone" id="phone">
+        <label for="licenseExp">License Expiration*</label>
+        <input type="date" name="licenseExpiration" id="licenseExpiration">
+        <label for="phone">Phone*</label>
+        <input type="text" name="phone" id="phone" placeholder="999-999-9999">
         <a style="font-size:12px;">* denotes required field</a>
         <input type="submit" value="Add Phlebotomist">
       </form>
@@ -34,6 +50,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>License Expiration</th>
+        <th>Phone</th>
     </tr>
     <tbody>
     {% for item in people %}
@@ -42,7 +59,8 @@
         <td>{{item[2]}}</td>
         <td>{{item[3]}}</td>
         <td>{{item[4]}}</td>
-        <td><input type="submit" formmethod="post" value="Delete"></td>
+        <td>{{item[5]}}</td>
+        <td> <input type='button' value='Delete' name='delete' onclick="window.location = '/delete_phlebotomist/{{item[0]}}'"></td>
         <form id="updatePhlebotomist" action="{{ url_for('update_phlebotomist', rowId=item[0]) }}" method="post">
           <td><input type="submit" value="Update"></td>
         </form>

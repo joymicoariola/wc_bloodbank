@@ -6,6 +6,16 @@
 
 {% block content %}
     <div>
+
+      <! -- VALIDATE INPUT -- !>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block body %}{% endblock %}
+      
       <form id="newDonation" action="/add_new_donations" method="post">
         <u><legend>ADD Donations (Donors/Phlebotomists/Schedules) Relationship</legend></u>
         <br>
@@ -42,9 +52,9 @@
     <table class="dataTable" border="1">
     <thead>
     <tr>
-        <th>Schedule ID</th>
-        <th>Phlebotomist ID</th>
         <th>Donor ID</th>
+        <th>Phlebotomist ID</th>
+        <th>Schedule ID</th>
     </tr>
     <tbody>
 
@@ -53,7 +63,6 @@
         <td>{{item[0]}}</td>
         <td>{{item[1]}}</td>
         <td>{{item[2]}}</td>
-
     </tr>
     </div>
     {% endfor %}
